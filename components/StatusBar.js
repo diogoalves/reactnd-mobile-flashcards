@@ -1,17 +1,17 @@
 import React from 'react';
 import { View, StatusBar, StyleSheet } from 'react-native';
 import { Constants } from 'expo';
-import { purple } from '../utils/colors';
+import { blue } from '../utils/colors';
 
 const MyStatusBar = () => (
   <View style={styles.container}>
-    <StatusBar translucent backgroundColor={purple} barStyle="light-content" />
+    <StatusBar translucent backgroundColor={blue} barStyle="light-content" />
   </View>
 );
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: purple,
+    backgroundColor: blue,
     height: Constants.statusBarHeight
   }
 })

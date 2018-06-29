@@ -1,14 +1,14 @@
 
 import React from 'react';
 import { createStackNavigator } from 'react-navigation'
-import { purple, white } from '../utils/colors';
+import { blue, white } from '../utils/colors';
 import Tabs from './Tabs';
 import DeckDetail from './DeckDetail';
 import NewCard from './NewCard';
 import Quiz from './Quiz';
 
 const MainNavigator = createStackNavigator({
-  Home: {
+  Decks: {
     screen: Tabs,
   },
   DeckDetail: {
@@ -16,7 +16,7 @@ const MainNavigator = createStackNavigator({
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {
-        backgroundColor: purple,
+        backgroundColor: blue,
       }
     }
   },

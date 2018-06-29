@@ -1,7 +1,7 @@
 import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation';
 import { Foundation, Entypo } from '@expo/vector-icons';
-import { purple, white } from '../utils/colors';
+import { blue, white } from '../utils/colors';
 import ListDecks from './ListDecks';
 import NewDeck from './NewDeck';
 
@@ -22,14 +22,14 @@ const Tabs = createBottomTabNavigator ({
   }
 }, {
   navigationOptions: {
-    header: null
+    header: 'null'
   },
   tabBarOptions: {
-    activeTintColor: purple,
+    activeTintColor: white,
     style: {
       height: 56,
-      backgroundColor: white,
-      shadowColor: 'rgba(0, 0, 0, 0.24)',
+      backgroundColor: blue,
+      shadowColor: 'rgba(0, 0, 0, 1)',
       shadowOffset: {
         width: 0,
         height: 3
