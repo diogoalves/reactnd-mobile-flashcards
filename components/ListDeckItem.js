@@ -19,14 +19,15 @@ class ListDeckItem extends Component {
 
 const styles = StyleSheet.create({
   contentContainer: {
-    paddingVertical: 20,
+    paddingVertical: 30,
     backgroundColor: white,
-    borderBottomColor: gray,
+    borderColor: gray,
     borderBottomWidth: 0.5
   },
   title: {
     textAlign: 'center',
-    fontWeight: 'bold',
+    //fontWeight: 'bold',
+    fontSize: 17,
 
   },
   subtitle: {

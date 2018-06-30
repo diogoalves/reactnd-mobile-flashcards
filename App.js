@@ -1,15 +1,20 @@
 import React from 'react';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import { StyleSheet, Text, View } from 'react-native';
 import StatusBar from './components/StatusBar';
-import MainNavigator from './components/MainNavigator';
+import Tabs from './components/Tabs';
+import reducer from './redux/reducer';
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <StatusBar />
-        <MainNavigator />
-      </View>
+      <Provider store={createStore(reducer)}>
+        <View style={styles.container}>
+          <StatusBar />
+          <Tabs />
+        </View>
+      </Provider>
     );
   }
 }
@@ -19,7 +24,6 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
 
 
 

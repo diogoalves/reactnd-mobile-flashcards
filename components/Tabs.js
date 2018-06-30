@@ -2,12 +2,12 @@ import React from 'react';
 import { createBottomTabNavigator } from 'react-navigation';
 import { Foundation, Entypo } from '@expo/vector-icons';
 import { blue, white } from '../utils/colors';
-import ListDecks from './ListDecks';
+import MainNavigator from './MainNavigator';
 import NewDeck from './NewDeck';
 
 const Tabs = createBottomTabNavigator ({
-  ListDecks: {
-    screen: ListDecks,
+  Decks: {
+    screen: MainNavigator,
     navigationOptions: {
       tabBarLabel: 'Decks',
       tabBarIcon: ({ tintColor }) => <Foundation name='list' size={30} color={tintColor} />
