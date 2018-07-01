@@ -2,7 +2,7 @@ import { AsyncStorage } from 'react-native'
 
 const STORAGE_KEY = 'reactnd-mobile-flashcards';
 
-export const decks = {
+const decks = {
   React: {
     title: 'React',
     questions: [
@@ -27,24 +27,41 @@ export const decks = {
   }
 };
 
-export const getDecks = () => {
+const getDecks = () => {
   return AsyncStorage.getItem(STORAGE_KEY)
           .then( result => result ? JSON.parse(result) : decks);
 } 
 
-export const getDeck = id => {
+const getDeck = id => {
   return AsyncStorage.getItem(STORAGE_KEY)
           .then( result => JSON.parse(results)[id] );
 }
 
-export const saveDeckTitle = title => {
+const saveDeckTitle = title => {
   return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
-    [title]: { title: title }
+    [title]: { title: title, questions: [] }
   }))  
 }
 
-export const addCardToDeck = (title, card) => {
-  return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
-    [title]: { questions: [ {card} ] }
-  }))  
+const addCardToDeck = (title, card) => {
+  return AsyncStorage.getItem(STORAGE_KEY, (err, result) => {
+      const db = JSON.parse(result);
+      if(db[title]) {
+        const updatedDeck = { title: title, questions: db[title].questions.concat(card) };
+        AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
+          [title]: updatedDeck
+        }));  
+      } else {
+        AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
+          [title]: { title: title, questions: [ card ] }
+        }));  
+      }
+  });
+}
+
+export default {
+  getDecks,
+  getDeck,
+  saveDeckTitle,
+  addCardToDeck
 }
