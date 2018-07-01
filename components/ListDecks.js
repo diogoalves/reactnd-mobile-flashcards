@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Text, View, TouchableOpacity, ScrollView, StyleSheet} from 'react-native';
 import ListDeckItem from './ListDeckItem';
-import { getDecks } from '../utils/api';
+import Api from '../utils/api';
 import { fetchDecksSuccessful } from '../redux/actions';
 
 class ListDecks extends Component {
   
   componentDidMount = () => {
-    getDecks().then(r => this.props.dispatch(fetchDecksSuccessful(r)));
+    Api.getDecks().then(r => this.props.dispatch(fetchDecksSuccessful(r)));
   }
 
   render () {
