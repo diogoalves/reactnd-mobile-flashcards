@@ -53,7 +53,7 @@ class NewCard extends Component {
         <TouchableOpacity
           onPress={this.onSubmit}
           style={styles.addCardButton}
-          disabled={question.length === 0 || answer === 0}
+          disabled={question.trim().length === 0 || answer.trim().length === 0}
         >
           <Text style={styles.addCardButtonText}>Add</Text>
         </TouchableOpacity>

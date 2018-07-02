@@ -40,7 +40,7 @@ class NewDeck extends Component {
         <TouchableOpacity
           onPress={this.onSubmit}
           style={styles.addDeckButton}
-          disabled={newDeckTitle.length === 0}
+          disabled={newDeckTitle.trim().length === 0}
         >
           <Text style={styles.addDeckButtonText}>Create Deck</Text>
         </TouchableOpacity>
