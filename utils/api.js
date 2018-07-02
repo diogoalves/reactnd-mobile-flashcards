@@ -1,4 +1,4 @@
-import { AsyncStorage } from 'react-native'
+import { AsyncStorage } from 'react-native';
 
 const STORAGE_KEY = 'reactnd-mobile-flashcards';
 
@@ -28,14 +28,8 @@ const decks = {
 };
 
 const getDecks = () => {
-  return AsyncStorage.getItem(STORAGE_KEY)
-          .then( result => result ? JSON.parse(result) : decks);
+  return AsyncStorage.getItem(STORAGE_KEY).then( result => result ? JSON.parse(result) : decks);
 } 
-
-const getDeck = id => {
-  return AsyncStorage.getItem(STORAGE_KEY)
-          .then( result => JSON.parse(results)[id] );
-}
 
 const saveDeckTitle = title => {
   return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
@@ -61,7 +55,6 @@ const addCardToDeck = (title, card) => {
 
 export default {
   getDecks,
-  getDeck,
   saveDeckTitle,
   addCardToDeck
 }
