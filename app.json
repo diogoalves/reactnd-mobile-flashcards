@@ -1,5 +1,24 @@
 {
   "expo": {
-    "sdkVersion": "27.0.0"
-  }
+    "sdkVersion": "27.0.0",
+    "orientation": "portrait",
+    "name": "MobileFlashcards",
+    "description": "The best flashcard learning tool.",
+    "slug": "mobileflashcard",
+    "version": "1.0",
+    "icon": "https://png.icons8.com/ios/50/000000/flashcards.png",
+    "splash": {
+      "backgroundColor": "#424242",
+      "image": "https://png.icons8.com/ios/50/000000/flashcards.png"
+    },
+    "notification": {
+      "icon": "http://www.student-scholarships.com/images/made/img/featured/nav_basketball_45_45.png"
+    },
+    "ios": {
+     "bundleIdentifier": "io.github.diogoalves.mobileflashcards"
+    },
+    "android": {
+     "package": "io.github.diogoalves.mobileflashcards"
+    }
+  },
 }
