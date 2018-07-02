@@ -4,14 +4,14 @@ import { Notifications, Permissions } from 'expo';
 const REMINDER_KEY = 'reactnd-mobile-flashcards-reminder';
 
 export const clear = async () => {
-  await AsyncStorage.removeItem(REMINDER_KEY)
+  await AsyncStorage.removeItem(REMINDER_KEY);
   await Notifications.cancelAllScheduledNotificationsAsync();
-}
+};
 
 const createReminder = () => {
   return {
     title: 'Time to study!',
-    body: "👋 remember reviewing your decks today!",
+    body: '👋 remember reviewing your decks today!',
     ios: {
       sound: true,
     },
@@ -20,9 +20,9 @@ const createReminder = () => {
       priority: 'high',
       sticky: false,
       vibrate: true,
-    }
-  }
-}
+    },
+  };
+};
 
 const createReminderTime = () => {
   let time = new Date();
@@ -33,9 +33,9 @@ const createReminderTime = () => {
   time.setSeconds(0);
   return {
     time: time,
-    repeat: 'day'
-  }
-}
+    repeat: 'day',
+  };
+};
 
 export const set = async () => {
   const alreadySet = await AsyncStorage.getItem(REMINDER_KEY);
@@ -43,20 +43,22 @@ export const set = async () => {
     const { status } = await Permissions.askAsync(Permissions.NOTIFICATIONS);
     if (status === 'granted') {
       await Notifications.cancelAllScheduledNotificationsAsync();
-      await Notifications.scheduleLocalNotificationAsync(createReminder(), createReminderTime());
+      await Notifications.scheduleLocalNotificationAsync(
+        createReminder(),
+        createReminderTime()
+      );
       await AsyncStorage.setItem(REMINDER_KEY, JSON.stringify(true));
-    }     
-  } 
-}
+    }
+  }
+};
 
 export const clearAndSet = async () => {
   await clear();
-  await set()
-}
-
+  await set();
+};
 
 export default {
   clear,
   set,
-  clearAndSet
-}
+  clearAndSet,
+};

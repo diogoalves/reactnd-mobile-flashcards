@@ -3,8 +3,7 @@ import { Text, View, TouchableOpacity, StyleSheet } from 'react-native';
 import { white, gray } from '../utils/colors';
 
 class ListDeckItem extends Component {
- 
-  render () {
+  render() {
     const { title, cardsQuantity, onClick } = this.props;
     return (
       <View style={styles.contentContainer}>
@@ -15,25 +14,23 @@ class ListDeckItem extends Component {
       </View>
     );
   }
-} 
+}
 
 const styles = StyleSheet.create({
   contentContainer: {
     paddingVertical: 30,
     backgroundColor: white,
     borderColor: gray,
-    borderBottomWidth: 0.5
+    borderBottomWidth: 0.5,
   },
   title: {
     textAlign: 'center',
     fontSize: 17,
-
   },
   subtitle: {
     textAlign: 'center',
-    color: gray
-
-  }
+    color: gray,
+  },
 });
 
 export default ListDeckItem;

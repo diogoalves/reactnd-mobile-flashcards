@@ -6,13 +6,12 @@ import StatusBar from './components/StatusBar';
 import Tabs from './components/Tabs';
 import reducer from './redux/reducer';
 import Reminder from './utils/reminder';
-import { white } from './utils/colors'
+import { white } from './utils/colors';
 
 export default class App extends React.Component {
-  
   componentDidMount = () => {
     Reminder.clearAndSet();
-  }
+  };
 
   render() {
     return (
@@ -29,10 +28,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: white
+    backgroundColor: white,
   },
 });
-
-
-
-

@@ -12,10 +12,8 @@ const MyStatusBar = () => (
 const styles = StyleSheet.create({
   container: {
     backgroundColor: blue,
-    height: Constants.statusBarHeight
-  }
-})
+    height: Constants.statusBarHeight,
+  },
+});
 
 export default MyStatusBar;
-
- 

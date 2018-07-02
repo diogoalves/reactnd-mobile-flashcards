@@ -8,53 +8,68 @@ const decks = {
     questions: [
       {
         question: 'What is React?',
-        answer: 'A library for managing user interfaces'
+        answer: 'A library for managing user interfaces',
       },
       {
         question: 'Where do you make Ajax requests in React?',
-        answer: 'The componentDidMount lifecycle event'
-      }
-    ]
+        answer: 'The componentDidMount lifecycle event',
+      },
+    ],
   },
   JavaScript: {
     title: 'JavaScript',
     questions: [
       {
         question: 'What is a closure?',
-        answer: 'The combination of a function and the lexical environment within which that function was declared.'
-      }
-    ]
-  }
+        answer:
+          'The combination of a function and the lexical environment within which that function was declared.',
+      },
+    ],
+  },
 };
 
 const getDecks = () => {
-  return AsyncStorage.getItem(STORAGE_KEY).then( result => result ? JSON.parse(result) : decks);
-} 
+  return AsyncStorage.getItem(STORAGE_KEY).then(
+    result => (result ? JSON.parse(result) : decks)
+  );
+};
 
 const saveDeckTitle = title => {
-  return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
-    [title]: { title: title, questions: [] }
-  }))  
-}
+  return AsyncStorage.mergeItem(
+    STORAGE_KEY,
+    JSON.stringify({
+      [title]: { title: title, questions: [] },
+    })
+  );
+};
 
 const addCardToDeck = (title, card) => {
   return AsyncStorage.getItem(STORAGE_KEY, (err, result) => {
-      const db = JSON.parse(result);
-      if(db[title]) {
-        const updatedDeck = { title: title, questions: db[title].questions.concat(card) };
-        AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
-          [title]: updatedDeck
-        }));  
-      } else {
-        AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
-          [title]: { title: title, questions: [ card ] }
-        }));  
-      }
+    const db = JSON.parse(result);
+    if (db[title]) {
+      const updatedDeck = {
+        title: title,
+        questions: db[title].questions.concat(card),
+      };
+      AsyncStorage.mergeItem(
+        STORAGE_KEY,
+        JSON.stringify({
+          [title]: updatedDeck,
+        })
+      );
+    } else {
+      AsyncStorage.mergeItem(
+        STORAGE_KEY,
+        JSON.stringify({
+          [title]: { title: title, questions: [card] },
+        })
+      );
+    }
   });
-}
+};
 
 export default {
   getDecks,
   saveDeckTitle,
-  addCardToDeck
-}
+  addCardToDeck,
+};

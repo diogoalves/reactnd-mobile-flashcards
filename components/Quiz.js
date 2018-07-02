@@ -9,37 +9,36 @@ import QuizSummary from './QuizSummary';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 class Quiz extends Component {
-  
   state = {
     current: 1,
     showingQuestion: true,
     showingAnswer: false,
     showingSummary: false,
     points: 0,
-  }
+  };
 
   static navigationOptions = {
     title: 'Quiz',
-  }
+  };
 
   showAnswer = () => {
     this.setState({
       showingQuestion: false,
-      showingAnswer: true
-    })
-  }
+      showingAnswer: true,
+    });
+  };
 
-  cardResult = (point) => () => {
+  cardResult = point => () => {
     const { length } = this.props;
     const { current } = this.state;
     const hasMoreCards = current < length;
 
-    if(hasMoreCards) {
+    if (hasMoreCards) {
       this.setState(currentState => ({
         current: currentState.current + 1,
         showingQuestion: true,
         showingAnswer: false,
-        points: currentState.points + point
+        points: currentState.points + point,
       }));
     } else {
       Reminder.clearAndSet();
@@ -49,7 +48,7 @@ class Quiz extends Component {
         points: currentState.points + point,
       }));
     }
-  }
+  };
 
   restartQuiz = () => {
     this.setState({
@@ -57,35 +56,55 @@ class Quiz extends Component {
       showingQuestion: true,
       showingAnswer: false,
       showingSummary: false,
-      points: 0,    
+      points: 0,
     });
-  }
+  };
 
-  render () {
-    const { current, showingQuestion, showingAnswer, showingSummary, points } = this.state;
+  render() {
+    const {
+      current,
+      showingQuestion,
+      showingAnswer,
+      showingSummary,
+      points,
+    } = this.state;
     const { questions, length } = this.props;
-    question = questions[current-1].question;
-    answer = questions[current-1].answer;
+    question = questions[current - 1].question;
+    answer = questions[current - 1].answer;
     return (
       <View style={styles.container}>
         <Text>{`${current} / ${length}`}</Text>
-        <QuizQuestion show={showingQuestion} text={question} showAnswer={this.showAnswer} />
-        <QuizAnswer show={showingAnswer} text={answer} correct={this.cardResult(1)} incorrect={this.cardResult(0)} />
-        <QuizSummary show={showingSummary} text={`You answered correctly ${points} of ${length} cards`} restart={this.restartQuiz} goBack={() => this.props.navigation.goBack()} />
+        <QuizQuestion
+          show={showingQuestion}
+          text={question}
+          showAnswer={this.showAnswer}
+        />
+        <QuizAnswer
+          show={showingAnswer}
+          text={answer}
+          correct={this.cardResult(1)}
+          incorrect={this.cardResult(0)}
+        />
+        <QuizSummary
+          show={showingSummary}
+          text={`You answered correctly ${points} of ${length} cards`}
+          restart={this.restartQuiz}
+          goBack={() => this.props.navigation.goBack()}
+        />
       </View>
     );
   }
-} 
+}
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
-    // justifyContent: 'center', 
+    flex: 1,
+    // justifyContent: 'center',
     // alignItems: 'center',
     backgroundColor: white,
     // justifyContent: 'space-around',
-  }
-})
+  },
+});
 
 const mapStateToProps = (decks, ownProps) => {
   const deckId = ownProps.navigation.getParam('deckId');
@@ -93,8 +112,8 @@ const mapStateToProps = (decks, ownProps) => {
   return {
     deck: deck,
     questions: deck.questions,
-    length: deck.questions.length
-  }
+    length: deck.questions.length,
+  };
 };
 
 export default connect(mapStateToProps)(Quiz);

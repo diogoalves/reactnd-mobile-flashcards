@@ -9,32 +9,32 @@ class DeckDetail extends Component {
       title: navigation.getParam('deckId', 'Detail'),
     };
   };
-  render () {
+  render() {
     const { title, cardsQuantity, goAddCard, goQuiz } = this.props;
     return (
       <View style={styles.container}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.subtitle}>{`${cardsQuantity} cards`}</Text>
-        <View style={{padding: 40}} />
+        <View style={{ padding: 40 }} />
         <TouchableOpacity onPress={goAddCard} style={styles.addCardButton}>
           <Text style={styles.addCardButtonText}>Create a New Question</Text>
         </TouchableOpacity>
-        <View style={{padding: 10}} />
+        <View style={{ padding: 10 }} />
         <TouchableOpacity onPress={goQuiz} style={styles.quizButton}>
           <Text style={styles.quizButtonText}>Start a Quiz</Text>
-        </TouchableOpacity>       
+        </TouchableOpacity>
       </View>
     );
   }
-} 
+}
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1, 
-    justifyContent: 'center', 
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: white,
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   title: {
     textAlign: 'center',
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     width: 200,
     marginLeft: 40,
     marginRight: 40,
-    borderWidth: 1
+    borderWidth: 1,
   },
   addCardButtonText: {
     color: gray,
@@ -66,25 +66,25 @@ const styles = StyleSheet.create({
     height: 50,
     width: 200,
     marginLeft: 40,
-    marginRight: 40
+    marginRight: 40,
   },
   quizButtonText: {
     color: white,
     fontSize: 17,
     textAlign: 'center',
-  }
+  },
 });
 
 const mapStateToProps = (decks, ownProps) => {
   const deckId = ownProps.navigation.getParam('deckId');
   const deck = decks[deckId];
   const title = deck['title'];
-  return ({
+  return {
     title: title,
     cardsQuantity: deck['questions'].length,
     goAddCard: () => ownProps.navigation.navigate('NewCard', { deckId, title }),
-    goQuiz: () => ownProps.navigation.navigate('Quiz', { deckId })
-  })
+    goQuiz: () => ownProps.navigation.navigate('Quiz', { deckId }),
+  };
 };
 
 export default connect(mapStateToProps)(DeckDetail);
