@@ -1,33 +1,23 @@
-import React, { Component } from 'react';
-import {
-  TouchableOpacity,
-  Text,
-  TextInput,
-  View,
-  StyleSheet,
-} from 'react-native';
+import React from 'react';
+import { TouchableOpacity, Text, View, StyleSheet } from 'react-native';
 import { white, black, gray } from '../utils/colors';
 
-class QuizSummary extends Component {
-  render() {
-    const { show, text, restart, goBack } = this.props;
+const QuizSummary = ({ show, text, restart, goBack }) => {
+  if (!show) return null;
 
-    if (!show) return null;
-
-    return (
-      <View style={styles.container}>
-        <Text style={styles.title}>{text}</Text>
-        <View style={{ padding: 40 }} />
-        <TouchableOpacity onPress={restart} style={styles.restartButton}>
-          <Text style={styles.restartButtonText}>Restart Quiz</Text>
-        </TouchableOpacity>
-        <TouchableOpacity onPress={goBack} style={styles.goBackButton}>
-          <Text style={styles.goBackButtonText}>Go Back</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-}
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>{text}</Text>
+      <View style={{ padding: 40 }} />
+      <TouchableOpacity onPress={restart} style={styles.restartButton}>
+        <Text style={styles.restartButtonText}>Restart Quiz</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={goBack} style={styles.goBackButton}>
+        <Text style={styles.goBackButtonText}>Go Back</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
