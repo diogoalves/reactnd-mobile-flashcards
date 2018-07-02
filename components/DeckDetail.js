@@ -87,6 +87,4 @@ const mapStateToProps = (decks, ownProps) => {
   })
 };
 
-
-
 export default connect(mapStateToProps)(DeckDetail);
