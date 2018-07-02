@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { white } from '../utils/colors';
+import Reminder from '../utils/reminder';
 import QuizQuestion from './QuizQuestion';
 import QuizAnswer from './QuizAnswer';
 import QuizSummary from './QuizSummary';
@@ -41,6 +42,7 @@ class Quiz extends Component {
         points: currentState.points + point
       }));
     } else {
+      Reminder.clearAndSet();
       this.setState(currentState => ({
         showingAnswer: false,
         showingSummary: true,
