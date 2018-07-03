@@ -20,7 +20,7 @@ class DeckDetail extends Component {
           <Text style={styles.addCardButtonText}>Create a New Question</Text>
         </TouchableOpacity>
         <View style={{ padding: 10 }} />
-        <TouchableOpacity onPress={goQuiz} style={styles.quizButton}>
+        <TouchableOpacity onPress={goQuiz} style={styles.quizButton} disabled={cardsQuantity === 0}>
           <Text style={styles.quizButtonText}>Start a Quiz</Text>
         </TouchableOpacity>
       </View>

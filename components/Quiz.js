@@ -6,7 +6,7 @@ import QuizQuestion from './QuizQuestion';
 import QuizAnswer from './QuizAnswer';
 import QuizSummary from './QuizSummary';
 
-import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet } from 'react-native';
 
 class Quiz extends Component {
   state = {
@@ -99,10 +99,7 @@ class Quiz extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
     backgroundColor: white,
-    // justifyContent: 'space-around',
   },
 });
 
